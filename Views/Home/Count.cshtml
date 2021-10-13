@@ -1,0 +1,57 @@
+﻿@using Microsoft.AspNetCore.Http
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<form asp-controller="Home" asp-action="Razor" method="post">
+    <input type="submit" value="Play Again" />
+</form>
+
+@{
+    int? count = Context.Session.GetInt32("count");
+    while (count >= 1)
+    {
+
+        <p>
+            @{
+                if (count > 1)
+                {
+                    <label>
+                        @count green bottlees standing on the wall,<br />
+                        @count green bottlees standing on the wall,<br />
+                    </label>
+                }
+                else if (count == 1)
+                {
+                    <label>
+                        @count green bottlee standing on the wall,<br />
+                        @count green bottlee standing on the wall,<br />
+                    </label>
+                }
+            }
+            And if one green bottle should accidentally fall,<br />
+            @{
+                count--;
+                if (count > 1)
+                {
+                    <label>There'll be @count green bottles standing on the wall.</label>
+                }
+                else if (count == 1)
+                {
+                    <label>There'll be @count green bottle standing on the wall.</label>
+                }
+                else
+                {
+                    <label>There'll be no green bottle standing on the wall.</label>
+                }
+
+            }
+        </p>
+        <p>
+            There is no green bottle standing on the wall.
+        </p>
+    }
+}
+
+
+
